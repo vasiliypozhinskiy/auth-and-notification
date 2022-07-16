@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Auth sample page</title>
+</head>
+<body>
+    <button onclick="vk_oauth()">
+        Зайти через VK
+    </button>
+    <button onclick="yandex_oauth()">
+        Зайти через Yandex
+    </button>
+    <div>
+        <label>
+            Введите access_token, полученый с помощью метода login:
+            <input id="access_token" required name="access_token">
+        </label>
+        <button onclick="enable_totp()">Активировать двухфакторную аутентификацию</button>
+    </div>
+    <div id="qr_container" style="display: None">
+        <canvas id="qr"></canvas>
+        <p>Просканируйте QR-код с помощью TOTP-приложения</p>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+<script>
+    let vk_oauth = async () => {
+        let response = await fetch("/auth/api/v1/oauth/vk/auth").then((response) => {
+            return response.json();
+        });
+        document.location=response.url;
+    }
+
+    let yandex_oauth = async () => {
+        let response = await fetch("/auth/api/v1/oauth/yandex/auth").then((response) => {
+            return response.json();
+        });
+        document.location = response.url;
+    }
+
+    let enable_totp = async () => {
+        let access_token = document.getElementById('access_token').value
+        let qr_container = document.getElementById('qr_container');
+
+        let response = await fetch("/auth/api/v1/enable_totp/",
+            {headers:
+                    {"Authorization": access_token}
+            }).then((response) => {
+                return  response.json();
+        });
+        qr_container.style.display = "block";
+        generate_qr(response["provisioning_url"]);
+    }
+
+    let generate_qr = (provisioning_uri) => {
+        new QRious({
+          element: document.getElementById('qr'),
+          value: provisioning_uri
+        });
+    };
+</script>
+</html>

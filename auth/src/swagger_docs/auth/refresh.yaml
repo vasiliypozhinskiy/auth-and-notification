@@ -1,0 +1,31 @@
+tags:
+  - auth
+summary: Метод для обновления токена на пару новых
+parameters:
+  - in: body
+    name: refresh_token
+    description: Данные пользователя
+    schema:
+      type: object
+      required:
+        - refresh_token
+        - access_token
+      properties:
+        refresh_token:
+          type: string
+        access_token:
+          type: string
+responses:
+  200:
+    description: Пользователь авторизирован
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            access_token:
+              type: string
+            refresh_token:
+              type: string
+  401:
+    description: Плохой токен

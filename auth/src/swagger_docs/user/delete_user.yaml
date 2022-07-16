@@ -1,0 +1,18 @@
+tags:
+  - user
+summary: Метод для удаления пользователя по id
+parameters:
+  - in: path
+    name: user_id
+    description: id пользователя (UUID)
+    schema:
+      type: string
+security:
+  - bearerAuth: ["authorization"]
+responses:
+  200:
+    description: Пользователь удалён
+  400:
+    description: Неправильные параметры запроса
+  404:
+    description: Пользователь не найден

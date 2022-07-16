@@ -1,0 +1,24 @@
+tags:
+  - role
+summary: Метод для изменения названия роли
+parameters:
+  - name: role_title
+    in: path
+    description: Название роли старое
+    type: string
+  - name: new_role
+    in: path
+    description: Название роли новое
+    type: string
+security:
+  - bearerAuth: ["authorization"]
+responses:
+  200:
+    description: Данные обновлены
+  400:
+    description: Неправильные параметры запроса
+  404:
+    description: роль не найден
+  409:
+    description: Невозможно обновить
+

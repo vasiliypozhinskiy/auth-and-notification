@@ -1,0 +1,39 @@
+tags:
+  - auth
+summary: Метод для регистрации пользователя
+parameters:
+  - in: body
+    name: user
+    description: Данные пользователя
+    schema:
+      type: object
+      required:
+        - login
+        - password
+      properties:
+        login:
+          type: string
+          example: login
+        password:
+          type: string
+          example: 123qweQWE!@#
+        code:
+          type: string
+          example: 123456
+          nullable: true
+responses:
+  200:
+    description: Пользователь авторизирован
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            access_token:
+              type: string
+            refresh_token:
+              type: string
+  404:
+    description: Неверный логин
+  403:
+    description: Неверный пароль

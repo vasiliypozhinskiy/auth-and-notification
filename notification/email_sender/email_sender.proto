@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package email_sender;
+
+service EmailSender {
+  rpc SendEmail (SendEmailRequest) returns (SendEmailReply) {};
+}
+
+message SendEmailRequest {
+  string email = 1;
+  string email_body = 2;
+}
+
+message SendEmailReply {}

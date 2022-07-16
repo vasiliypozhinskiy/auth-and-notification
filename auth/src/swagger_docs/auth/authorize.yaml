@@ -1,0 +1,19 @@
+summary: Проверка валидности access token и получение ролей из токена
+tags:
+  - auth
+security:
+  - bearerAuth: ["authorization"]
+responses:
+  200:
+    description: Успешный логаут, вот роли
+    content:
+      application/json:
+        schema:
+        type: object
+        properties:
+        roles:
+          type: array
+          items:
+            type: string
+  400:
+    description: Невалидный токен

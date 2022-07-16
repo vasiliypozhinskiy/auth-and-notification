@@ -1,0 +1,46 @@
+tags:
+  - user
+summary: Метод для регистрации пользователя
+parameters:
+  - in: body
+    name: user
+    description: Данные пользователя
+    schema:
+      type: object
+      required:
+        - login
+        - password
+        - email
+      properties:
+        login:
+          type: string
+          example: login
+        password:
+          type: string
+          example: 123qweQWE!@#
+        email:
+          type: string
+          example: example@email.com
+        first_name:
+          type: string
+          example: Иван
+        last_name:
+          type: string
+          example: Иванов
+        birthdate:
+          type: string
+          format: date
+          example: "2000-01-20"
+responses:
+  201:
+    description: Пользователь зарегестрирован
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            user_id: string
+  400:
+    description: Неправильные параметры запроса
+  409:
+    description: Пользователь с таким имейлом или логином уже зарегестрирован

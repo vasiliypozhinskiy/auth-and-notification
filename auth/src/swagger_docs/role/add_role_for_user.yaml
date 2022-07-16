@@ -1,0 +1,26 @@
+tags:
+  - actions_role
+summary: Добавление роли пользователю
+
+parameters:
+  - name: user_id
+    in: path
+    description: id пользователя (UUID)
+    type: string
+    required: True
+  - name: role_title
+    in: path
+    description: Имя поля
+    type: string
+    required: True
+security:
+  - bearerAuth: ["authorization"]
+responses:
+  200:
+    description: Роль добавлена
+  400:
+    description: Неправильные параметры запроса
+  404:
+    description: Пользователь или роль не найдены
+
+

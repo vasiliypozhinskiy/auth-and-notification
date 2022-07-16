@@ -1,0 +1,15 @@
+tags:
+  - oauth
+summary: Метод для редиректа после oauth
+responses:
+  200:
+    description: Пользователь авторизирован
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            access_token:
+              type: string
+            refresh_token:
+              type: string

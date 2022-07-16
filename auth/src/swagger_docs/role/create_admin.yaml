@@ -1,0 +1,34 @@
+tags:
+  - actions_role
+summary: Метод для назначения админа
+parameters:
+  - in: body
+    name: user
+    description: Данные пользователя
+    schema:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          example: example@email.com
+        password:
+          type: string
+          example: 123qweQWE!@#
+security:
+  - bearerAuth: ["authorization"]
+responses:
+  201:
+    description: Пользователь зарегестрирован
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            user_id: string
+  400:
+    description: Неправильные параметры запроса
+  409:
+    description: Пользователь с таким имейлом или логином уже зарегестрирован

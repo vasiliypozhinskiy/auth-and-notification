@@ -1,0 +1,18 @@
+tags:
+  - role
+summary: Метод для удаления роли по title
+parameters:
+  - in: path
+    name: role_title
+    description: Название роли
+    schema:
+      type: string
+security:
+  - bearerAuth: ["authorization"]
+responses:
+  200:
+    description: Роль удалена
+  400:
+    description: Неправильные параметры запроса
+  404:
+    description: Роль не найдена

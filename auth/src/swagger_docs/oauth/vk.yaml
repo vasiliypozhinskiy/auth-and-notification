@@ -1,0 +1,6 @@
+tags:
+  - oauth
+summary: Метод для oauth через VK
+responses:
+  200:
+    description: Пользователь авторизирован

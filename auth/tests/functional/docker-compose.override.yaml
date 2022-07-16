@@ -1,0 +1,15 @@
+version: '3'
+services:
+  auth:
+    environment:
+      UVICORN_RELOAD: 1
+      DEBUG: 1
+      TRACE_SAMPLING_FREQUENCY: 1
+      LOG_TRACING: 0
+    ports:
+      - "5000:5000"
+    command: bash -c "./debug_ep.sh"
+  tests:
+    volumes:
+      - ./:/app
+      - ./../../../protobufs:/app/protobufs

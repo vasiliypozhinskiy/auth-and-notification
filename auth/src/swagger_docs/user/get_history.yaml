@@ -1,0 +1,18 @@
+tags:
+  - user
+summary: Метод для получения истории логинов пользователя
+parameters:
+  - in: path
+    name: user_id
+    description: id пользователя (UUID)
+    schema:
+      type: string
+security:
+  - bearerAuth: ["authorization"]
+responses:
+  200:
+    description: История логинов пользователя
+  401:
+    description: Неверный пароль
+  404:
+    description: Пользователь не найден

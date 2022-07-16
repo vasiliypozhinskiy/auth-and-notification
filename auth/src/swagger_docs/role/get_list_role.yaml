@@ -1,0 +1,22 @@
+tags:
+  - role
+summary: Метод для получения всех ролей
+parameters:
+  - in: body
+    schema:
+      type: string
+responses:
+  200:
+    description: Данные пользователя
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            title:
+              type: string
+
+  400:
+    description: Неправильные параметры запроса
+  404:
+    description: Данные не найдены

@@ -1,0 +1,6 @@
+tags:
+  - oauth
+summary: Метод для oauth через mail
+responses:
+  200:
+    description: Пользователь авторизирован

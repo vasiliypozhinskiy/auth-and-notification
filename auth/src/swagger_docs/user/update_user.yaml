@@ -1,0 +1,43 @@
+tags:
+  - user
+summary: Метод для обновления данных пользователя по id
+parameters:
+  - in: path
+    name: user_id
+    description: id пользователя (UUID)
+    schema:
+      type: string
+  - in: body
+    name: user_data
+    description: данные пользователя
+    schema:
+      type: object
+      properties:
+        login:
+          type: string
+          example: login
+        email:
+          type: string
+          example: example@email.com
+        first_name:
+          type: string
+          example: Иван
+        last_name:
+          type: string
+          example: Иванов
+        birthdate:
+          type: string
+          format: date
+          example: "2000-01-20"
+security:
+  - bearerAuth: ["authorization"]
+responses:
+  200:
+    description: Данные обновлены
+  400:
+    description: Неправильные параметры запроса
+  404:
+    description: Пользователь не найден
+  409:
+    description: Невозможно обновить
+

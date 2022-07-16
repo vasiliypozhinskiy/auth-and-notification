@@ -1,0 +1,18 @@
+tags:
+  - role
+summary: Создание роли
+parameters:
+  - name: new_role
+    in: path
+    description: Новая роль
+    type: string
+    required: True
+security:
+  - bearerAuth: ["authorization"]
+responses:
+  201:
+    description: Роль успешно созданна
+  400:
+    description: Неправильные параметры запроса
+  409:
+    description: Роль уже существует
